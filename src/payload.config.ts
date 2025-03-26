@@ -28,6 +28,10 @@ export default buildConfig({
   },
   db: mongooseAdapter({
     url: process.env.DATABASE_URI || '',
+    connectOptions: {
+      tls: true,
+      tlsCAFile: '/etc/ssl/certs/coolify-ca.crt', // Matches the bind mount
+    },
   }),
   sharp,
   plugins: [
